@@ -1,13 +1,75 @@
 /***************************************/
 
+.site-navigation
+    position                            fixed
+    bottom                              0
+    left                                0
+    width                               100%
+    height                              $navigationHeight
+    background-color                    $color2
+    box-shadow(0, 0, 24px, 0, 0.1)
+
+.sn-list
+    display                             table
+    width                               100%
+
+.sn-itm
+    display                             table-cell
+    width                               1%
+    text-align                          center
+
+.sn-lnk
+    position                            relative
+    display                             block
+    padding                             5px 0
+
+    &.active
+    &:hover
+    &:focus
+    &:active
+        .sn-lnk_text
+            color                       $color3
+
+.sn-lnk_icon
+    display                             block
+    margin                              0 auto
+
+    &.icon-star
+    &.icon-games
+        width                           24px
+        height                          @width
+
+.sn-lnk_text
+    display                             block
+    font-size                           1rem
+    color                               $color14
+    letter-spacing                      0.2px
+    font-b()
+
+.sn-lnk_notification
+    display                             block
+    position                            absolute
+    top                                 -22px
+    right                               0
+    background-color                    $color3
+    color                               $color2
+    font-size                           1.2rem
+    height                              20px
+    line-height                         1.2
+    padding                             3px
+    text-align                          center
+    rounded-block( 10px )
+
 
 /* Mediaqueries Tablet ( >= 640px) */
-// @media all and ( min-width: $smallScreenContentMaxWidth )
+@media all and ( min-width: $smallScreenContentMaxWidth )
+
+    .site-navigation
+        height                          $navigationHeightTablet
 
 
-/* Mediaqueries Desktop ( >= 960px) */
-// @media all and ( min-width: $mediumScreenContentMaxWidth )
+/* Mediaqueries Desktop ( >= 768px) */
+@media all and ( min-width: $mediumScreenContentMaxWidth )
 
-
-/* Mediaqueries Large ( >= 1400px) */
-// @media all and ( min-width: $largeScreenContentMaxWidth )
+    .site-navigation
+        height                          $navigationHeightDesktop

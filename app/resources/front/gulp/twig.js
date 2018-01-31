@@ -1,5 +1,5 @@
 module.exports = function( gulp, pkg, config ) {
-    var twig, semver, rename, plumber, filter, htmlbeautify, debug, fs, htmlmin, outputNameFile;
+    var twig, semver, rename, plumber, filter, htmlbeautify, fs, htmlmin, outputNameFile;
 
     twig                                = require( 'gulp-twig' );
     semver                              = require( 'semver' );
@@ -7,7 +7,6 @@ module.exports = function( gulp, pkg, config ) {
     plumber                             = require( 'gulp-plumber' );
     filter                              = require( 'gulp-filter' );
     htmlbeautify                        = require( 'gulp-html-beautify' );
-    debug                               = require( 'gulp-debug' );
     fs                                  = require( 'fs' );
     htmlmin                             = require( 'gulp-htmlmin' );
 

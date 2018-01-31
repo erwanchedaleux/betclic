@@ -1,19 +1,162 @@
 {% extends '_extended_base.twig' %}
 
+{% set meta_title_override = 'Now Popular' %}
+
 {% block content %}
 
     <div class="site-content">
         <div class="inner">
-            <div class="article">
-                <h1>Accueil</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />
-                    Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
+            {% set games = [
+                {
+                    type: 'normal',
+                    icon: 'football',
+                    time: 'Today 20H30',
+                    name: [ 'Paris SG', 'Saint Étienne' ],
+                    event: 'French League 1',
+                    bets: '25',
+                    odds: [ '1.70', '3.60', '5.00' ]
+                },
+                {
+                    type: 'live',
+                    img: 'img-jsock-mcilic-2',
+                    icon: 'tennis',
+                    time: '3rd set',
+                    name: [ 'J.Sock', 'M.Cilic' ],
+                    event: 'US Open',
+                    bets: '150',
+                    odds: [ '2.65', '1.38' ]
+                },
+                {
+                    type: 'normal',
+                    icon: 'tennis',
+                    time: 'Tomorrow 20H45',
+                    name: [ 'J.Tsonga', 'K.Anderson' ],
+                    event: 'US Open',
+                    bets: '150',
+                    odds: [ '2.65', '1.38' ]
+                },
+                {
+                    type: 'normal',
+                    icon: 'football',
+                    time: '2/11/16 21H00',
+                    name: [ 'Monaco', 'Tottenham' ],
+                    event: 'Champions League',
+                    bets: '73'
+                },
+                {
+                    type: 'normal',
+                    img: 'img-jsock-mcilic',
+                    icon: 'tennis',
+                    tv: true,
+                    time: 'Tomorrow 20H45',
+                    name: [ 'J. Sock', 'M. Cilic' ],
+                    event: 'US Open',
+                    bets: '150',
+                    odds: [ '-', '1.38' ]
+                },
+                {
+                    type: 'live',
+                    icon: 'football',
+                    tv: true,
+                    time: '95\'',
+                    score: '1 - 0',
+                    name: [ 'Lyon', 'Marseille' ],
+                    event: 'Europa League',
+                    bets: '73',
+                    odds: [ '2.70', '3.25', '2.60' ]
+                }
+            ] %}
+            {% for game in games %}
+                <div class="mod-game">
+                    {% if game.img is defined %}
+                        <div class="mg-foreground">
+                            <img srcset="{{ macros.asset('assets/media/img/' ~ game.img ~ '-290.jpg', current_domain, version) }} 290w,
+                                         {{ macros.asset('assets/media/img/' ~ game.img ~ '-580.jpg', current_domain, version) }} 580w,
+                                         {{ macros.asset('assets/media/img/' ~ game.img ~ '-1024.jpg', current_domain, version) }} 1024w,
+                                         {{ macros.asset('assets/media/img/' ~ game.img ~ '-1536.jpg', current_domain, version) }} 1536w"
+                                 sizes="100vw"
+                                 alt="{{ game.name ~ ' - ' ~ game.event }}"
+                                 data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                 src="{{ macros.asset('assets/media/img/' ~ game.img ~ '-290.jpg', current_domain, version) }}"
+                                 class="mg-foreground_img lazyload" />
+                             {% if game.type == 'live' %}
+                                 <span class="mg-foreground_live-icon icon-live"></span>
+                             {% endif %}
+                        </div>
+                    {% endif %}
+                    <div class="mg-informations">
+                        <div class="mg-informations_drawing">
+                            <span class="mg-informations_icon icon-{{ game.icon }}"></span>
+                        </div>
+                        <div class="mg-informations_text">
+                            {% if game.type == 'live' and game.icon == 'tennis' %}
+                                <span class="mg-informations_match-name">
+                                    {{- game.name[0] ~ '<br />' ~ game.name[1] -}}
+                                </span>
+                                <span class="mg-informations_match-event">{{ game.event }}</span>
+                            {% else %}
+                                <span class="mg-informations_match-time">
+                                    {% if game.tv is defined %}
+                                        {% if game.type == 'live' %}
+                                            <span class="mg-informations_live-icon icon-live"></span>
+                                        {% endif %}
+                                        <span class="mg-informations_tv-icon icon-tv"></span>
+                                    {% endif %}
+                                    {{ game.time }}
+                                </span>
+                                <span class="mg-informations_match-name">
+                                    {{- game.name[0] ~ (game.score is defined ? '' : ' - ') -}}
+                                    {% if game.score %}
+                                        <span class="mg-informations_match-score">{{ game.score }}</span>
+                                    {% endif %}
+                                    {{- game.name[1] -}}
+                                </span>
+                                <span class="mg-informations_match-event">{{ game.event }}</span>
+                            {% endif %}
+                        </div>
+                        {% if game.type == 'live' and game.icon == 'tennis' %}
+                            <div class="mg-score-tennis">
+                                <span class="mg-score-tennis_time">{{ game.time }}</span>
+                                <div class="mg-score-tennis_board">
+                                    <div class="mg-score-tennis_set">
+                                        <span class="mg-score-tennis_lost-set">2</span>
+                                        <span class="mg-score-tennis_win-set">6</span>
+                                    </div>
+                                    <div class="mg-score-tennis_set">
+                                        <span class="mg-score-tennis_lost-set">3</span>
+                                        <span class="mg-score-tennis_win-set">6</span>
+                                    </div>
+                                    <div class="mg-score-tennis_set_in-progress">
+                                        <span class="mg-score-tennis_set-inprogress">5</span>
+                                        <span class="mg-score-tennis_set-inprogress">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="mg-informations_bets">
+                            <span class="mg-informations_bet-value">{{ game.bets }}</span>
+                            <span class="mg-informations_bet-label">bets</span>
+                            <span class="mg-informations_bet-icon icon-arrow-1-b"></span>
+                        </div>
+                    </div>
+                    <div class="mg-odds">
+                        {% if game.odds is defined %}
+                            {% for odd in game.odds %}
+                                <div class="mg-odds_odd{{ (min(game.odds) == odd and game.type == 'live' ? ' mg-odds_odd-min' : '') }}">
+                                    <span class="mg-odds_label">{{ (loop.index != 2 ? loop.index : (loop.length == 2 ? '2' : 'N') ) }}</span>
+                                    <span class="mg-odds_value">{{ odd }}</span>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="mg-odds_bet">
+                                <a href="#" class="mg-odds_btn btn-1">
+                                    Bet now
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 

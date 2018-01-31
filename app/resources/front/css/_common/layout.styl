@@ -20,26 +20,23 @@ body
 
 .site-wrapper
     min-height                          100%
-    margin-bottom                       -($footerHeight)
 
 .site-content
-    padding                             20px 0
+    padding                             $headerHeight 0 $navigationHeight 0
+    background-color                    $color11
+
+    .inner
+        padding-top                     15px
+        padding-bottom                  15px
 
 .inner
     max-width                           $innerWidth
     margin                              0 auto
-    padding                             0 10px
+    padding                             0 15px
 
 
 /* Mediaqueries Tablet ( >= 640px) */
-@media all and ( min-width: $smallScreenContentMaxWidth )
-
-    .site-wrapper
-        margin-bottom                   -($footerHeightTablet)
-
-        &:after
-            height                      $footerHeightTablet
-
+// @media all and ( min-width: $smallScreenContentMaxWidth )
 
 /* Mediaqueries Desktop ( >= 960px) */
 @media all and ( min-width: $mediumScreenContentMaxWidth )
@@ -48,24 +45,5 @@ body
     body
         overflow-x                      initial
 
-    .site-wrapper
-        margin-bottom                   -($footerHeightDesktop)
-
-        &:after
-            height                      $footerHeightDesktop
-
     .site-content
-        padding                         20px 0
-
-
-/* Mediaqueries Large ( >= 1400px) */
-@media all and ( min-width: $largeScreenContentMaxWidth )
-
-    .site-wrapper
-        margin-bottom                   -($footerHeightLarge)
-
-        &:after
-            height                      $footerHeightLarge
-
-    .inner
-        max-width                       $largeScreenContentMaxWidth
+        padding                         $headerHeightDesktop 0 $navigationHeightDesktop 0

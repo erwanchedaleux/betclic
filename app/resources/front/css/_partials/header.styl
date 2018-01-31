@@ -1,9 +1,92 @@
 /***************************************/
 
 .site-header
-    background-color                    $color3
+    position                            fixed
+    top                                 0
+    left                                0
+    width                               100%
     color                               $color2
     height                              $headerHeight
+    overflow                            hidden
+    purple-scarlet-gradient-linear-to-right()
+
+.sh-logo
+    float                               left
+
+.sh-logo_lnk
+    display                             block
+    padding                             4px 0 12px 0
+
+.sh-logo_img
+    width                               81px
+    height                              28px
+
+.sh-legal
+    float                               left
+    margin                              8px 0 8px 8px
+    width                               28px
+    height                              @width
+    background-color                    rgba($color1, 0.2)
+    rounded-block()
+
+.sh-legal_text
+    display                             block
+    width                               100%
+    height                              @width
+    font-size                           1.3rem
+    line-height                         2.3
+    text-align                          center
+
+.sh-balance
+    float                               right
+    background-color                    rgba($color1, 0.2)
+    margin                              8px 0
+    rounded-block( 18px )
+
+.sh-balance_icon
+    display                             block
+    float                               left
+    width                               24px
+    height                              @width
+    margin                              2px
+
+.sh-balance_text
+    float                               left
+    margin-left                         8px
+    text-align                          right
+    padding                             3px 9px 3px 0
+    font-b()
+
+.sh-account
+    float                               right
+
+.sh-account
+    margin-left                         10px
+
+.sh-account_lnk
+    position                            relative
+    display                             block
+    padding                             10px 0 10px 5px
+
+.sh-account_icon
+    display                             block
+    width                               16px
+    height                              22px
+
+.sh-account_notification
+    display                             block
+    position                            absolute
+    top                                 2px
+    right                               -7px
+    background-color                    $color1
+    color                               $color2
+    font-size                           1.1rem
+    width                               14px
+    height                              @width
+    line-height                         1.2
+    text-align                          center
+    font-eb()
+    rounded-block()
 
 /* Mediaqueries Tablet ( >= 640px) */
 @media all and ( min-width: $smallScreenContentMaxWidth )
@@ -11,15 +94,39 @@
     .site-header
         height                          $headerHeightTablet
 
+    .sh-logo_lnk
+        padding                         8px 0 12px 0
 
-/* Mediaqueries Desktop ( >= 960px) */
+    .sh-legal
+        margin                          13px 0 12px 8px
+
+    .sh-balance
+        margin                          12px 0
+
+    .sh-account_lnk
+        padding                         16px 0 15px 5px
+
+    .sh-account_notification
+        top                             8px
+
+
+/* Mediaqueries Desktop ( >= 768px) */
 @media all and ( min-width: $mediumScreenContentMaxWidth )
 
     .site-header
         height                          $headerHeightDesktop
 
-/* Mediaqueries Large ( >= 1400px) */
-@media all and ( min-width: $largeScreenContentMaxWidth )
+    .sh-logo_lnk
+        padding                         12px 0 16px 0
 
-    .site-header
-        height                          $headerHeightLarge
+    .sh-legal
+        margin                          18px 0 18px 8px
+
+    .sh-balance
+        margin                          17px 0
+
+    .sh-account_lnk
+        padding                         20px 0 20px 5px
+
+    .sh-account_notification
+        top                             12px

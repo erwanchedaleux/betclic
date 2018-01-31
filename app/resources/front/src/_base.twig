@@ -1,17 +1,16 @@
-{% import "_macros/_asset.twig" as macros %}
-
 <!DOCTYPE html>
 <html lang="{{ (locale ? locale : '') }}" class="no-js">
     <head>
         {%- set absolute_path       = true %}
         {%- set critical_css        = true %}
-        {%- set font_loading        = true %}
+        {%- set font_loading        = false %}
         {%- set js                  = true %}
-        {%- set old_browser         = true %}
-        
+        {%- set old_browser         = false %}
+        {%- set debug_bar_enabled   = false %}
+
         {%- set current_domain      = (absolute_path ? 'http://' ~ domain : '' ) %}
         {%- set current_url         = current_domain ~ '/' ~ page %}
-        {%- set dev_mode            = ('dev.' in domain ? true : false) %}
+        {%- set dev_mode            = (debug_bar_enabled ? ('dev.' in domain ? true : false) : false) %}
         {%- set site_title          = (title ? title : '') %}
         {%- set meta_title          = (meta_title_override is defined ? meta_title_override|striptags ~ ' | ' ~ title : (title ? title : '')) %}
         {%- set meta_description    = (meta_description_override is defined ? meta_description_override|striptags : (description is defined ? description : '')) %}
@@ -19,7 +18,7 @@
         {%- set twitter_name        = (twitter_name ? twitter_name : '') %}
         {%- set twitter_image       = '' %}
         {%- set og_image            = '' %}
-        {%- set site_logo           = 'logo-html-socle' %}
+        {%- set site_logo           = 'logo-betclic' %}
 
         {%- if not debug and not dev_mode -%}
             {# Start Googke Tag Manager #}

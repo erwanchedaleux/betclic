@@ -93,7 +93,7 @@ module.exports = function( gulp, pkg, config ) {
                 .src( [
                     config.path.resources.js + 'vendor/polyfill/polyfill.js',
                     config.path.resources.js + 'vendor/plugins/jquery.js',
-                    config.path.resources.js + 'vendor/plugins/jquery.cookie.js',
+                    // config.path.resources.js + 'vendor/plugins/jquery.cookie.js',
                     config.path.resources.js + 'vendor/plugins/lazysizes.js'
                 ] )
                 .pipe( gulpConcat( 'lib.js' ) )

@@ -1,8 +1,30 @@
 <header class="site-header">
     <div class="inner">
-        Header
-        {% block navigation %}
-            {% include '_navigation.twig' %}
-        {% endblock %}
+        <div class="sh-logo">
+            <a href="{{ current_domain ~ '/' }}" class="sh-logo_lnk">
+                <img srcset="{{ macros.asset('assets/media/img/' ~ site_logo ~ '-81.png', current_domain, version) }} 81w,
+                             {{ macros.asset('assets/media/img/' ~ site_logo ~ '-122.png', current_domain, version) }} 122w"
+                     sizes="81px"
+                     alt="{{ site_title }}"
+                     data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     src="{{ macros.asset('assets/media/img/' ~ site_logo ~ '-244.png', current_domain, version) }}"
+                     class="sh-logo_img" />
+            </a>
+        </div>
+        <div class="sh-legal">
+            <span class="sh-legal_text">
+                +18
+            </span>
+        </div>
+        <div class="sh-account">
+            <a href="{{ current_domain ~ '/' }}" class="sh-account_lnk">
+                <span class="sh-account_icon icon-user-account"></span>
+                <span class="sh-account_notification">8</span>
+            </a>
+        </div>
+        <div class="sh-balance">
+            <span class="sh-balance_icon icon-part-coin"></span>
+            <span class="sh-balance_text">256 000,70 €</span>
+        </div>
     </div>
 </header>

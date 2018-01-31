@@ -1,4 +1,5 @@
 {% extends '_base.twig' %}
+{% import "_macros/_asset.twig" as macros %}
 
 {% block global_content %}
     <div id="main">
@@ -7,13 +8,10 @@
                 {% include 'partials/_header.twig' %}
             {% endblock header %}
             {% block content '' %}
+            {%- block navigation -%}
+                {% include 'partials/_navigation.twig' %}
+            {% endblock navigation %}
         </div>
-        {%- block footer -%}
-            {% include 'partials/_footer.twig' %}
-        {% endblock footer %}
-        {%- block cookies %}
-            {% include 'partials/_cookies.twig' %}
-        {% endblock cookies %}
     </div>
 
 {% endblock global_content %}

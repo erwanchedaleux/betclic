@@ -1,12 +1,12 @@
 {
-    "name":                             "dev.html-socle",
-    "title":                            "Socle HTML",
-    "locale":                           "fr",
-    "description":                      "An HTML Socle based on auto generation pages with Gulp. Bootup, Critical CSS, Modernizr, jQuery, jQueryCookie, LazySizes, Picturefill",
-    "keywords":                         "html, socle, css, js, gulp",
-    "twitter_name":                     "html-socle",
+    "name":                             "dev.betclic",
+    "title":                            "Betclic",
+    "locale":                           "en",
+    "description":                      "Rejoignez le leader des paris sportifs en ligne et pariez en direct ou en pré-match sur tous vos sports préférés (Football, tennis, rugby, basket-ball) !",
+    "keywords":                         "Betclic, paris sportif, sport, live, direct, Football, tennis, rugby, basket-ball",
+    "twitter_name":                     "betclic",
     "version":                          "0.0.1",
-    "debug":                            false, 
+    "debug":                            true, 
     "homepage":                         "",
     "author": {
         "name":                         "Erwan Chedaleux",
@@ -15,7 +15,7 @@
     },
     "repository": {
         "type":                         "git",
-        "url":                          "git@github.com:erwanchedaleux/html-socle.git"
+        "url":                          "git@github.com:erwanchedaleux/betclic.git"
     },
     "licenses":                         "UNLICENSED",
     "private":                          true,

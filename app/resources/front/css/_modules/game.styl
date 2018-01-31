@@ -1,0 +1,98 @@
+/***************************************/
+
+.mod-game
+    background-color                    $color2
+    margin-bottom                       15px
+    overflow                            hidden
+    box-shadow(0, 0, 12px, 0, 0.15)
+    rounded-block(4px)
+
+    &:last-child
+        margin-bottom                   0
+
+.mg-informations
+    display                             table
+    padding                             15px 10px 5px 10px
+    width                               100%
+
+.mg-informations_drawing
+.mg-informations_text
+.mg-informations_bets
+    display                             table-cell
+    vertical-align                      middle
+
+.mg-informations_drawing
+    width                               35px
+
+.mg-informations_bets
+    width                               40px
+
+.mg-informations_icon
+    display                             block
+
+    &.icon-football
+        width                           24px
+        height                          @width
+
+.mg-informations_match-time
+    display                             block
+    font-size                           1.1rem
+    letter-spacing                      -0.3px
+    color                               $color13
+    text-transform                      uppercase
+    line-height                         1.1
+
+.mg-informations_text
+    font-eb()
+
+.mg-informations_match-name
+    display                             block
+    font-size                           1.8rem
+    letter-spacing                      -0.4px
+    color                               $color16
+    line-height                         1.6
+
+.mg-informations_match-event
+    display                             block
+    font-size                           1.2rem
+    letter-spacing                      -0.3px
+    color                               $color13
+    line-height                         1.1
+
+.mg-informations_bets
+    position                            relative
+    padding-right                       15px
+
+.mg-informations_bet-value
+    display                             block
+    font-size                           1.6rem
+    letter-spacing                      -0.4px
+    color                               $color16
+    line-height                         1.4
+    text-align                          right
+    font-b()
+
+.mg-informations_bet-label
+    display                             block
+    font-size                           1.1rem
+    letter-spacing                      -0.4px
+    color                               $color13
+    line-height                         1.1
+    text-align                          right
+    font-b()
+
+.mg-informations_bet-icon
+    position                            absolute
+    top                                 50%
+    right                               0
+    transform                           translateY(-50%)
+    display                             block
+    width                               8px
+    height                              12px
+    background-color                    $color13
+
+.mg-odds
+    padding                             5px 10px
+
+/* Mediaqueries Tablet ( <= 639px) */
+// @media all and ( max-width: $smallScreenContentMinWidth )
