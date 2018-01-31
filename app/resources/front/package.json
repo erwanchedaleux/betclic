@@ -1,0 +1,84 @@
+{
+    "name":                             "dev.html-socle",
+    "title":                            "Socle HTML",
+    "locale":                           "fr",
+    "description":                      "An HTML Socle based on auto generation pages with Gulp. Bootup, Critical CSS, Modernizr, jQuery, jQueryCookie, LazySizes, Picturefill",
+    "keywords":                         "html, socle, css, js, gulp",
+    "twitter_name":                     "html-socle",
+    "version":                          "0.0.1",
+    "debug":                            false, 
+    "homepage":                         "",
+    "author": {
+        "name":                         "Erwan Chedaleux",
+        "email":                        "erwan.chedaleux@gmail.com",
+        "url":                          "http://www.erwan-chedaleux.fr/"
+    },
+    "repository": {
+        "type":                         "git",
+        "url":                          "git@github.com:erwanchedaleux/html-socle.git"
+    },
+    "licenses":                         "UNLICENSED",
+    "private":                          true,
+    "engines": {
+        "node":                         "6.10.3",
+        "npm":                          "3.10.10"
+    },
+    "scripts": {
+        "test":                         "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "picturefill":                  "3.0.2"
+    },
+    "devDependencies": {
+        "gulp":                         "gulpjs/gulp#4.0",
+        "merge-stream":                 "1.0.1",
+        "npm-check-updates":            "2.10.4",
+        "gulp-sizereport":              "1.2.0",
+        "gulp-bump":                    "2.7.0",
+        "gulp-replace":                 "0.6.1",
+
+        "gulp-strip-code":              "0.1.4",
+
+        "gulp-notify":                  "3.0.0",
+
+        "gulp-newer":                   "1.3.0",
+        "gulp-clean":                   "0.3.2",
+        "gulp-header":                  "1.8.8",
+
+        "gulp-eslint":                  "3.0.1",
+        "gulp-concat":                  "2.6.1",
+        "gulp-uglify":                  "2.1.2",
+        "gulp-browserify":              "0.5.1",
+        "browserify":                   "14.1.0",
+        "browserify-replace":           "0.9.0",
+        "stringify":                    "5.1.0",
+        "html-minifier":                "3.4.2",
+        "gulp-modernizr":               "1.0.0-alpha",
+
+        "gulp-watch":                   "4.3.9",
+        "gulp-savefile":                "0.1.1",
+
+        "gulp-stylus":                  "2.6.0",
+        "gulp-postcss":                 "6.4.0",
+        "autoprefixer":                 "6.7.7",
+        "gulp-cssmin":                  "0.1.7",
+
+        "gulp-imagemin":                "3.3.0",
+        "imagemin-jpeg-recompress":     "5.1.0",
+
+        "gulp-twig":                    "1.2.0",
+        "gulp-htmllint":                "0.0.12",
+        "gulp-filter":                  "4.0.0",
+        "gulp-html-beautify":           "1.0.1",
+        "gulp-plumber":                 "1.1.0",
+        "gulp-rename":                  "1.2.2",
+        "gulp-plumber":                 "1.1.0",
+        "gulp-htmlhint":                "2.0.0",
+        "gulp-htmlmin":                 "4.0.0",
+
+        "jquery":                       "3.2.1",
+        "jquery.cookie":                "1.4.1",
+        "sumoselect":                   "3.0.3",
+        "lazysizes":                    "4.0.1"
+    }
+}
