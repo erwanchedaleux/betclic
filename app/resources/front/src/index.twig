@@ -1,6 +1,8 @@
 {% extends '_extended_base.twig' %}
 
 {% set meta_title_override = 'Now Popular' %}
+{% set twitter_image_override = 'img-jsock-mcilic-2-1536.jpg' %}
+{% set og_image_override = twitter_image_override %}
 
 {% block content %}
 
@@ -11,7 +13,7 @@
                     type: 'normal',
                     icon: 'football',
                     time: 'Today 20H30',
-                    name: [ 'Paris SG', 'Saint Étienne' ],
+                    name: [ 'Paris SG', 'Saint Etienne' ],
                     event: 'French League 1',
                     bets: '25',
                     odds: [ '1.70', '3.60', '5.00' ]
@@ -67,7 +69,7 @@
                 }
             ] %}
             {% for game in games %}
-                <div class="mod-game">
+                <div class="mod-game{{ (game.type == 'live' ? ' live' : '') }}">
                     {% if game.img is defined %}
                         <div class="mg-foreground">
                             <img srcset="{{ macros.asset('assets/media/img/' ~ game.img ~ '-290.jpg', current_domain, version) }} 290w,
@@ -75,12 +77,12 @@
                                          {{ macros.asset('assets/media/img/' ~ game.img ~ '-1024.jpg', current_domain, version) }} 1024w,
                                          {{ macros.asset('assets/media/img/' ~ game.img ~ '-1536.jpg', current_domain, version) }} 1536w"
                                  sizes="100vw"
-                                 alt="{{ game.name ~ ' - ' ~ game.event }}"
-                                 data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                 src="{{ macros.asset('assets/media/img/' ~ game.img ~ '-290.jpg', current_domain, version) }}"
+                                 alt="{{ game.name[0] ~ ' - ' ~ game.name[1] ~ ' (' ~ game.event ~ ')' }}"
+                                 data-src="{{ macros.asset('assets/media/img/' ~ game.img ~ '-1536.jpg', current_domain, version) }}"
+                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                  class="mg-foreground_img lazyload" />
                              {% if game.type == 'live' %}
-                                 <span class="mg-foreground_live-icon icon-live"></span>
+                                 <span class="mg-foreground_live-icon icon-live">Live</span>
                              {% endif %}
                         </div>
                     {% endif %}
@@ -88,32 +90,34 @@
                         <div class="mg-informations_drawing">
                             <span class="mg-informations_icon icon-{{ game.icon }}"></span>
                         </div>
-                        <div class="mg-informations_text">
+                        <h2 class="mg-informations_text">
                             {% if game.type == 'live' and game.icon == 'tennis' %}
                                 <span class="mg-informations_match-name">
-                                    {{- game.name[0] ~ '<br />' ~ game.name[1] -}}
+                                    {{- game.name[0] ~ '<br />' ~ game.name[1] -}}
                                 </span>
                                 <span class="mg-informations_match-event">{{ game.event }}</span>
                             {% else %}
                                 <span class="mg-informations_match-time">
                                     {% if game.tv is defined %}
                                         {% if game.type == 'live' %}
-                                            <span class="mg-informations_live-icon icon-live"></span>
+                                            <span class="mg-informations_live-icon icon-live">Live</span>
+                                            <span class="mg-informations_live-tv-icon icon-live-tv">TV</span>
+                                        {% else %}
+                                            <span class="mg-informations_tv-icon icon-tv">TV</span>
                                         {% endif %}
-                                        <span class="mg-informations_tv-icon icon-tv"></span>
                                     {% endif %}
                                     {{ game.time }}
                                 </span>
                                 <span class="mg-informations_match-name">
-                                    {{- game.name[0] ~ (game.score is defined ? '' : ' - ') -}}
+                                    {{- game.name[0] ~ (game.score is defined ? '' : ' - ') -}}
                                     {% if game.score %}
                                         <span class="mg-informations_match-score">{{ game.score }}</span>
                                     {% endif %}
-                                    {{- game.name[1] -}}
+                                    {{- game.name[1] -}}
                                 </span>
                                 <span class="mg-informations_match-event">{{ game.event }}</span>
                             {% endif %}
-                        </div>
+                        </h2>
                         {% if game.type == 'live' and game.icon == 'tennis' %}
                             <div class="mg-score-tennis">
                                 <span class="mg-score-tennis_time">{{ game.time }}</span>
@@ -133,19 +137,22 @@
                                 </div>
                             </div>
                         {% endif %}
-                        <div class="mg-informations_bets">
-                            <span class="mg-informations_bet-value">{{ game.bets }}</span>
-                            <span class="mg-informations_bet-label">bets</span>
-                            <span class="mg-informations_bet-icon icon-arrow-1-b"></span>
-                        </div>
+                        <h3 class="mg-informations_bets">
+                            <a href="#" class="mg-informations_bet-lnk">
+                                <span class="mg-informations_bet-value">{{ game.bets }}</span>
+                                <span class="mg-informations_bet-label">bets</span>
+                                <span class="mg-informations_bet-icon icon-arrow-1-b"></span>
+                            </a>
+                        </h3>
                     </div>
                     <div class="mg-odds">
                         {% if game.odds is defined %}
                             {% for odd in game.odds %}
-                                <div class="mg-odds_odd{{ (min(game.odds) == odd and game.type == 'live' ? ' mg-odds_odd-min' : '') }}">
-                                    <span class="mg-odds_label">{{ (loop.index != 2 ? loop.index : (loop.length == 2 ? '2' : 'N') ) }}</span>
+                                <h4 class="mg-odds_odd{{ (min(game.odds) == odd and game.type == 'live' and game.icon == 'football' ? ' mg-odds_odd-min' : '') }}">
+                                    <span class="mg-odds_seo">Odd: </span>
+                                    <span class="mg-odds_label">{{ (loop.index == 1 ? loop.index : (loop.index == 3 ? '2' : (loop.length == 2 ? '2' : 'N') ) ) }}</span>
                                     <span class="mg-odds_value">{{ odd }}</span>
-                                </div>
+                                </h4>
                             {% endfor %}
                         {% else %}
                             <div class="mg-odds_bet">

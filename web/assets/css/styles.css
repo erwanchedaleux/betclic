@@ -1,7 +1,7 @@
 /*!
  *  Betclic
  *  @author: Erwan Chedaleux
- *  @version: 0.0.1
+ *  @version: 0.0.3
  *  
 */
 
@@ -60,7 +60,7 @@ h4,
 h5,
 h6 {
   font-size: 100%;
-  font-weight: normal;
+  font-weight: 400;
 }
 q:before,
 q:after {
@@ -112,21 +112,21 @@ legend {
 @font-face {
   font-family: 'metropolis';
   font-display: swap;
-  src: url("/assets/media/fonts/metropolis-regular-webfont.woff?eri2lx") format('woff'), url("/assets/media/fonts/metropolis-regular-webfont.woff2?eri2lx") format('woff2'), url("/assets/media/fonts/metropolis-regular-webfont.ttf?eri2lx") format('truetype');
+  src: url("../../assets/media/fonts/metropolis-regular-webfont.woff?eri2lx") format('woff'), url("../../assets/media/fonts/metropolis-regular-webfont.woff2?eri2lx") format('woff2'), url("../../assets/media/fonts/metropolis-regular-webfont.ttf?eri2lx") format('truetype');
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: 'metropolis';
   font-display: swap;
-  src: url("/assets/media/fonts/metropolis-bold-webfont.woff?eri2lx") format('woff'), url("/assets/media/fonts/metropolis-bold-webfont.woff2?eri2lx") format('woff2'), url("/assets/media/fonts/metropolis-bold-webfont.ttf?eri2lx") format('truetype');
+  src: url("../../assets/media/fonts/metropolis-bold-webfont.woff?eri2lx") format('woff'), url("../../assets/media/fonts/metropolis-bold-webfont.woff2?eri2lx") format('woff2'), url("../../assets/media/fonts/metropolis-bold-webfont.ttf?eri2lx") format('truetype');
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: 'metropolis';
   font-display: swap;
-  src: url("/assets/media/fonts/metropolis-extrabold-webfont.woff?eri2lx") format('woff'), url("/assets/media/fonts/metropolis-extrabold-webfont.woff2?eri2lx") format('woff2'), url("/assets/media/fonts/metropolis-extrabold-webfont.ttf?eri2lx") format('truetype');
+  src: url("../../assets/media/fonts/metropolis-extrabold-webfont.woff?eri2lx") format('woff'), url("../../assets/media/fonts/metropolis-extrabold-webfont.woff2?eri2lx") format('woff2'), url("../../assets/media/fonts/metropolis-extrabold-webfont.ttf?eri2lx") format('truetype');
   font-style: normal;
   font-weight: 800;
 }
@@ -134,8 +134,6 @@ legend {
 [class*=" btn-"],
 a[class^="btn-"],
 a[class*=" btn-"] {
-  display: inline-block;
-  max-width: 268px;
   height: 44px;
   text-align: center;
   vertical-align: middle;
@@ -202,6 +200,44 @@ a.btn-1.active {
 .mod-game:last-child {
   margin-bottom: 0;
 }
+.mod-game.live .mg-informations {
+  background-color: #292929;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.mod-game.live .mg-informations_match-name {
+  color: #fff;
+  line-height: 1.2;
+  clear: both;
+}
+.mod-game.live .mg-informations_match-event {
+  line-height: 1.3;
+}
+.mod-game.live .mg-informations_bet-value {
+  color: #fff;
+}
+.mod-game.live .mg-informations_match-time {
+  text-align: right;
+  margin-right: 10px;
+}
+.mg-foreground {
+  position: relative;
+}
+.mg-foreground_img {
+  display: block;
+  margin-bottom: -1px;
+}
+.mg-foreground_live-icon {
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 35px;
+  height: 16px;
+  color: transparent;
+  font: 0/0px;
+  text-shadow: none;
+}
 .mg-informations {
   display: table;
   padding: 15px 10px 5px 10px;
@@ -221,8 +257,6 @@ a.btn-1.active {
 }
 .mg-informations_icon {
   display: block;
-}
-.mg-informations_icon.icon-football {
   width: 24px;
   height: 24px;
 }
@@ -233,6 +267,8 @@ a.btn-1.active {
   color: #999;
   text-transform: uppercase;
   line-height: 1.1;
+  margin-bottom: 3px;
+  font-weight: 800;
 }
 .mg-informations_text {
   font-weight: 800;
@@ -242,7 +278,43 @@ a.btn-1.active {
   font-size: 1.8rem;
   letter-spacing: -0.4px;
   color: #111;
-  line-height: 1.6;
+  line-height: 1;
+  margin-bottom: 3px;
+  font-weight: 800;
+}
+.mg-informations_match-score {
+  margin: 0 8px;
+}
+.mg-informations_live-icon {
+  float: left;
+  display: block;
+  width: 35px;
+  height: 16px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  color: transparent;
+  font: 0/0px;
+  text-shadow: none;
+}
+.mg-informations_live-tv-icon {
+  float: left;
+  display: block;
+  width: 19px;
+  height: 16px;
+  margin-bottom: 5px;
+  color: transparent;
+  font: 0/0px;
+  text-shadow: none;
+}
+.mg-informations_tv-icon {
+  display: inline-block;
+  width: 16px;
+  height: 12px;
+  margin-right: 3px;
+  vertical-align: middle;
+  color: transparent;
+  font: 0/0px;
+  text-shadow: none;
 }
 .mg-informations_match-event {
   display: block;
@@ -250,18 +322,25 @@ a.btn-1.active {
   letter-spacing: -0.3px;
   color: #999;
   line-height: 1.1;
+  font-weight: 800;
 }
 .mg-informations_bets {
+  text-align: center;
+}
+.mg-informations_bet-lnk {
   position: relative;
+  display: block;
   padding-right: 15px;
+}
+.mg-odds_seo {
+  display: none;
 }
 .mg-informations_bet-value {
   display: block;
   font-size: 1.6rem;
   letter-spacing: -0.4px;
   color: #111;
-  line-height: 1.4;
-  text-align: right;
+  line-height: 1.1;
   font-weight: 700;
 }
 .mg-informations_bet-label {
@@ -269,8 +348,7 @@ a.btn-1.active {
   font-size: 1.1rem;
   letter-spacing: -0.4px;
   color: #999;
-  line-height: 1.1;
-  text-align: right;
+  line-height: 1;
   font-weight: 700;
 }
 .mg-informations_bet-icon {
@@ -280,12 +358,85 @@ a.btn-1.active {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   display: block;
-  width: 8px;
+  width: 7px;
   height: 12px;
-  background-color: #999;
 }
 .mg-odds {
-  padding: 5px 10px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 410px;
+  padding: 15px 50px 8px 10px;
+}
+.mg-odds_odd {
+  position: relative;
+  display: table-cell;
+  width: 1%;
+  background-color: #fc0;
+  border-right: 8px solid #fff;
+  padding: 11px;
+}
+.mg-odds_odd-min {
+  background-color: #111;
+}
+.mg-odds_odd-min .mg-odds_value {
+  color: #fc0;
+}
+.mg-odds_label {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-right: 10px;
+  font-weight: 700;
+}
+.mg-odds_value {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 1.4rem;
+  color: #111;
+  margin-left: 7px;
+  font-weight: 800;
+}
+.mg-odds_btn {
+  display: block;
+  margin-right: 8px;
+}
+.mg-score-tennis {
+  text-align: right;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.mg-score-tennis_time {
+  font-size: 1.1rem;
+  color: #999;
+  letter-spacing: -0.3px;
+  font-weight: 700;
+}
+.mg-score-tennis_board {
+  display: table;
+}
+.mg-score-tennis_set,
+.mg-score-tennis_set_in-progress {
+  display: table-cell;
+  font-size: 1.8rem;
+  color: #fff;
+  width: 100%;
+  padding-left: 10px;
+  font-weight: 800;
+}
+.mg-score-tennis_lost-set,
+.mg-score-tennis_win-set,
+.mg-score-tennis_set-inprogress {
+  display: block;
+  line-height: 1.2;
+  height: 20px;
+}
+.mg-score-tennis_lost-set {
+  color: #666;
+}
+.mg-score-tennis_win-set {
+  color: #999;
 }
 .lazyload,
 .lazyloading {
@@ -316,7 +467,7 @@ a.btn-1.active {
 .sn-lnk {
   position: relative;
   display: block;
-  padding: 5px 0;
+  padding: 8px 0;
 }
 .sn-lnk.active .sn-lnk_text,
 .sn-lnk:hover .sn-lnk_text,
@@ -328,23 +479,37 @@ a.btn-1.active {
   display: block;
   margin: 0 auto;
 }
+.sn-lnk_icon.icon-sports {
+  width: 22px;
+  height: 23px;
+}
+.sn-lnk_icon.icon-calendar {
+  width: 22px;
+  height: 24px;
+}
 .sn-lnk_icon.icon-star,
 .sn-lnk_icon.icon-games {
   width: 24px;
   height: 24px;
+}
+.sn-lnk_icon.icon-resultats {
+  width: 23px;
+  height: 25px;
 }
 .sn-lnk_text {
   display: block;
   font-size: 1rem;
   color: #666;
   letter-spacing: 0.2px;
+  line-height: 1.3;
   font-weight: 700;
 }
 .sn-lnk_notification {
   display: block;
   position: absolute;
-  top: -22px;
-  right: 0;
+  top: 1px;
+  left: 50%;
+  margin-left: 5px;
   background-color: #d40e12;
   color: #fff;
   font-size: 1.2rem;
@@ -354,13 +519,70 @@ a.btn-1.active {
   text-align: center;
   border-radius: 10px;
 }
+.sn-bet {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  overflow: hidden; /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #95072f 0%, #d40e12 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  border-radius: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+.sn-bet_lnk {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: background 0.5s ease;
+}
+.sn-bet_lnk:hover,
+.sn-bet_lnk:focus,
+.sn-bet_lnk:active {
+  background-color: #d40e12;
+}
+.sn-bet_lnk:hover .sn-bet_cart,
+.sn-bet_lnk:focus .sn-bet_cart,
+.sn-bet_lnk:active .sn-bet_cart {
+  -webkit-transform: translate(-50%, -50%) scale(1.1);
+          transform: translate(-50%, -50%) scale(1.1);
+}
+.sn-bet_cart {
+  display: block;
+  width: 27px;
+  height: 25px;
+  margin-left: -2px;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 @media all and (min-width: 640px) {
   .site-navigation {
     height: 60px;
+  }
+  .sn-bet {
+    bottom: 60px;
+  }
+  .sn-lnk {
+    padding: 13px 0;
   }
 }
 @media all and (min-width: 768px) {
   .site-navigation {
     height: 70px;
+  }
+  .sn-bet {
+    bottom: 70px;
+  }
+  .sn-lnk_notification {
+    top: 10px;
+  }
+  .sn-lnk {
+    padding: 18px 0;
   }
 }

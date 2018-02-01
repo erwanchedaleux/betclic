@@ -9,10 +9,9 @@ PROJECT.Settings = {
 
 PROJECT.files = {
     "main": [
-        "/assets/js/lib.js",
-        "/assets/js/scripts.js"
+        "assets/js/lib.js"
     ],
     "picturefill": [
-        "/assets/js/polyfill/picturefill.js"
+        "assets/js/polyfill/picturefill.js"
     ]
 };

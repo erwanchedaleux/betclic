@@ -78,7 +78,6 @@ module.exports = function( gulp, pkg, config ) {
                 .src( [
                     config.path.resources.js + 'vendor/modernizr/modernizr.js',
                     config.path.resources.js + 'vendor/modernizr/addons.js',
-                    config.path.resources.js + 'vendor/modernizr/old-browser-redirect.js',
                     config.path.resources.js + 'config/starter-config.js'
                 ] )
                 .pipe( gulpConcat( 'main.js' ) )
@@ -91,9 +90,8 @@ module.exports = function( gulp, pkg, config ) {
     gulp.task( 'concatLib',  function() {
         return gulp
                 .src( [
-                    config.path.resources.js + 'vendor/polyfill/polyfill.js',
-                    config.path.resources.js + 'vendor/plugins/jquery.js',
-                    // config.path.resources.js + 'vendor/plugins/jquery.cookie.js',
+                    // config.path.resources.js + 'vendor/polyfill/polyfill.js',
+                    // config.path.resources.js + 'vendor/plugins/jquery.js',
                     config.path.resources.js + 'vendor/plugins/lazysizes.js'
                 ] )
                 .pipe( gulpConcat( 'lib.js' ) )

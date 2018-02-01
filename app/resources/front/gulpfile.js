@@ -33,16 +33,16 @@ gulp.task( 'twig-optimization', gulp.series( 'twig', 'render-html-optimization' 
 gulp.task( 'css', gulp.parallel( 'allcss', 'inlinecss' ) );
 gulp.task( 'css-optimization', gulp.parallel( 'cssmin', 'inline-cssmin' ) );
 
-gulp.task( 'scripts', gulp.parallel( 'browserify', 'browserifyPolyfill', 'concatMain', 'concatLib', 'concatInlineJSDev', 'concatInlineJSProd' ) );
-gulp.task( 'scripts-optimization', gulp.parallel( 'uglify-main', 'uglify-scripts', 'uglify-lib', 'uglify-picturefill', 'inline-uglify' ) );
+gulp.task( 'scripts', gulp.parallel( 'browserifyPolyfill', 'concatMain', 'concatLib', 'concatInlineJSDev', 'concatInlineJSProd' ) );
+gulp.task( 'scripts-optimization', gulp.parallel( 'uglify-main', 'uglify-lib', 'uglify-picturefill', 'inline-uglify' ) );
 
 gulp.task( 'img-optimization', gulp.parallel( 'optimize-img' ) );
 
-gulp.task( 'watch', gulp.parallel( 'watchJS_Browserify', 'watchJS_Main', 'watchJS_Lib', 'watchJS_Inline', 'watchStylus', 'watchTwig' ) );
+gulp.task( 'watch', gulp.parallel( 'watchJS_Main', 'watchJS_Lib', 'watchJS_Inline', 'watchStylus', 'watchTwig' ) );
 gulp.task( 'default', gulp.series( 'eslint', 'modernizr', 'clean', 'refreshDebugModeDevelop', 'twig', 'validateHtml', 'css', 'scripts', 'notifyBuild' ) );
 gulp.task( 'develop', gulp.series( 'default', 'watch' ) );
 
 
-gulp.task( 'releasePatch', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', 'strip-code', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionPatch', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );
-gulp.task( 'releaseMinor', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', 'strip-code', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionMinor', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );
-gulp.task( 'releaseMajor', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', 'strip-code', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionMajor', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );
+gulp.task( 'releasePatch', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionPatch', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );
+gulp.task( 'releaseMinor', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionMinor', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );
+gulp.task( 'releaseMajor', gulp.series( 'eslint', 'modernizr', 'clean', 'css', 'scripts', gulp.parallel( 'css-optimization', 'scripts-optimization' ), 'notifyRelease', 'versionMajor', 'refreshDebugModeRelease', 'twig-optimization', 'validateHtml', 'sizereport' ) );

@@ -1,7 +1,7 @@
 /*!
  *  Betclic
  *  @author: Erwan Chedaleux
- *  @version: 0.0.1
+ *  @version: 0.0.3
  *  
 */
 
@@ -50,6 +50,7 @@ ul {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   color: #fff;
   height: 44px;
@@ -61,7 +62,7 @@ ul {
 }
 .sh-logo_lnk {
   display: block;
-  padding: 4px 0 12px 0;
+  padding: 4px 0 6px 0;
 }
 .sh-logo_img {
   width: 81px;
@@ -69,7 +70,7 @@ ul {
 }
 .sh-legal {
   float: left;
-  margin: 8px 0 8px 8px;
+  margin: 8px 0 8px 5px;
   width: 28px;
   height: 28px;
   background-color: rgba(0,0,0,0.2);
@@ -208,6 +209,11 @@ body {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 15px;
+}
+@media all and (min-width: 640px) {
+  .site-content {
+    padding: 54px 0 60px 0;
+  }
 }
 @media all and (min-width: 768px) {
   html,

@@ -2,10 +2,10 @@
     "name":                             "dev.betclic",
     "title":                            "Betclic",
     "locale":                           "en",
-    "description":                      "Rejoignez le leader des paris sportifs en ligne et pariez en direct ou en pré-match sur tous vos sports préférés (Football, tennis, rugby, basket-ball) !",
-    "keywords":                         "Betclic, paris sportif, sport, live, direct, Football, tennis, rugby, basket-ball",
+    "description":                      "Online Sports Betting Football, Tennis, Basketball, Ice Hockey Mobile",
+    "keywords":                         "Betclic, bets, sport, live, Football, tennis, rugby, basket-ball",
     "twitter_name":                     "betclic",
-    "version":                          "0.0.1",
+    "version":                          "0.0.3",
     "debug":                            true, 
     "homepage":                         "",
     "author": {

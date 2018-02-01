@@ -12,9 +12,7 @@ module.exports = function( gulp, pkg, config ) {
         return gulp
                 .src( [
                     config.path.resources.css + 'styles.styl',
-                    // config.path.resources.css + 'errors.styl',
                     config.path.resources.css + 'debug-bar.styl',
-                    // config.path.resources.css + 'fonts.styl',
                     config.path.resources.css + '_base64/images.styl'
                 ] )
                 .pipe( stylus( {

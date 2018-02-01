@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ (locale ? locale : '') }}" class="no-js">
     <head>
-        {%- set absolute_path       = true %}
+        {%- set absolute_path       = false %}
         {%- set critical_css        = true %}
         {%- set font_loading        = false %}
         {%- set js                  = true %}
         {%- set old_browser         = false %}
         {%- set debug_bar_enabled   = false %}
 
-        {%- set current_domain      = (absolute_path ? 'http://' ~ domain : '' ) %}
+        {%- set current_domain      = (absolute_path ? 'http://' ~ domain ~ '/' : '' ) %}
         {%- set current_url         = current_domain ~ '/' ~ page %}
         {%- set dev_mode            = (debug_bar_enabled ? ('dev.' in domain ? true : false) : false) %}
         {%- set site_title          = (title ? title : '') %}
@@ -16,8 +16,8 @@
         {%- set meta_description    = (meta_description_override is defined ? meta_description_override|striptags : (description is defined ? description : '')) %}
         {%- set meta_keywords       = (keywords ? keywords : '') %}
         {%- set twitter_name        = (twitter_name ? twitter_name : '') %}
-        {%- set twitter_image       = '' %}
-        {%- set og_image            = '' %}
+        {%- set twitter_image       = (twitter_image_override ? macros.asset('assets/media/img/' ~ twitter_image_override, current_domain, version) : '') %}
+        {%- set og_image            = (og_image_override ? macros.asset('assets/media/img/' ~ og_image_override, current_domain, version) : '') %}
         {%- set site_logo           = 'logo-betclic' %}
 
         {%- if not debug and not dev_mode -%}
@@ -36,7 +36,7 @@
         {%- endif -%}
         <meta name="description" content="{{ meta_description|raw }}">
         <meta name="keywords" content="{{ meta_keywords }}">
-        <meta name="robots" content="{{ (dev_mode is not defined ? 'noindex, nofollow' : 'index, follow') }}">
+        <meta name="robots" content="{{ (not dev_mode ? 'noindex, nofollow' : 'index, follow') }}">
 
         {# OPENGRAPH #}
         {%- block opengraph_meta -%}
@@ -84,10 +84,10 @@
         <link rel="icon" type="image/png" sizes="96x96" href="{{ macros.asset('assets/media/img/favicon-96x96.png', current_domain, version) }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ macros.asset('assets/media/img/favicon-16x16.png', current_domain, version) }}">
         <link rel="manifest" href="{{ macros.asset('system/manifest.json', current_domain, version) }}">
-        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#d40e12">
         <meta name="msapplication-TileImage" content="{{ macros.asset('assets/media/img/ms-icon-144x144.png', current_domain, version) }}">
         <meta name="msapplication-tap-highlight" content="no"/>
-        <meta name="theme-color" content="#ffffff">
+        <meta name="theme-color" content="#d40e12">
 
         {# OLD BROWSER REDIRECT #}
         {%- block old_browser -%}
@@ -98,9 +98,7 @@
 
         {# INLINE STYLESHEETS #}
         {%- block inline_stylesheets -%}
-            {%- if debug or critical_css -%}
-                <link rel="stylesheet" href="{{ macros.asset('system/inlinecss.css', current_domain, version) }}">
-            {%- elseif critical_css -%}
+            {%- if critical_css -%}
                 <style>{% include '../../../../web/system/inlinecss.css' %}</style>
             {% endif %}
         {% endblock inline_stylesheets %}
@@ -158,7 +156,6 @@
             {%- if debug and js -%}
                 <script defer src="{{ macros.asset('assets/js/polyfill/picturefill.js', current_domain, version) }}"></script>
                 <script defer src="{{ macros.asset('assets/js/lib.js', current_domain, version) }}"></script>
-                <script defer src="{{ macros.asset('assets/js/scripts.js', current_domain, version) }}"></script>
             {% endif %}
             {% block extra_head_javascripts '' %}
         {% endblock head_javascripts %}

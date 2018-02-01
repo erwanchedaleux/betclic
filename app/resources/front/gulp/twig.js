@@ -57,7 +57,13 @@ module.exports = function( gulp, pkg, config ) {
             .pipe( htmlbeautify( {
                     "indent_char": '\t',
                     "indent_size": 1,
-                    "end_with_newline": true
+                    "end_with_newline": true,
+                    "max_preserve_newlines": 0,
+                    "unformatted": [
+                        "style",
+                        "script",
+                        "noscript"
+                    ]
                 } )
             )
             .pipe( gulp.dest( config.path.web.base ) );
